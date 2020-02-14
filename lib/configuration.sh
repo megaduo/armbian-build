@@ -19,8 +19,8 @@ REVISION=$(cat ${SRC}/VERSION)"$SUBREVISION" # all boards have same revision
 TZDATA=$(cat /etc/timezone) # Timezone for target is taken from host or defined here.
 USEALLCORES=yes # Use all CPU cores for compiling
 EXIT_PATCHING_ERROR="" # exit patching if failed
-[[ -z $HOST ]] && HOST="$(echo "$BOARD" | cut -f1 -d-)" # set hostname to the board
-ROOTFSCACHE_VERSION=17
+[[ -z $HOST ]] && HOST="$BOARD" # set hostname to the board
+ROOTFSCACHE_VERSION=18
 CHROOT_CACHE_VERSION=7
 BUILD_REPOSITORY_URL=$(git remote get-url $(git remote 2>/dev/null) 2>/dev/null)
 BUILD_REPOSITORY_COMMIT=$(git describe --match=d_e_a_d_b_e_e_f --always --dirty 2>/dev/null)
@@ -99,7 +99,7 @@ source "${SRC}/config/sources/families/${LINUXFAMILY}.conf"
 
 if [[ -f $USERPATCHES_PATH/sources/families/$LINUXFAMILY.conf ]]; then
 	display_alert "Adding user provided $LINUXFAMILY overrides"
-	source "$USERPATCHES_PATH/sources/${LINUXFAMILY}.conf"
+	source "$USERPATCHES_PATH/sources/families/${LINUXFAMILY}.conf"
 fi
 
 # load architecture defaults
@@ -236,7 +236,7 @@ case $RELEASE in
 		[[ -z $BUILD_MINIMAL || $BUILD_MINIMAL == no ]] && PACKAGE_LIST_RELEASE="man-db kbd net-tools gnupg2 dirmngr networkd-dispatcher"
 		PACKAGE_LIST_DESKTOP+=" xserver-xorg-input-all paprefs dbus-x11 pulseaudio-module-gsettings onboard"
 		PACKAGE_LIST_DESKTOP_RECOMMENDS+=" firefox system-config-printer-common system-config-printer \
-								language-selector-gnome mirage"
+								language-selector-gnome viewnior"
 	;;
 
 	eoan)
