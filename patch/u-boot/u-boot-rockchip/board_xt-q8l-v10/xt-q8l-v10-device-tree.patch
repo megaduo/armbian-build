@@ -1,5 +1,8 @@
+diff --git a/arch/arm/dts/rk3288-xt-q8l-v10.dts b/arch/arm/dts/rk3288-xt-q8l-v10.dts
+new file mode 100644
+index 00000000..e0fbda6b
 --- /dev/null
-+++ b/arch/arm/dts/rk3288-xt-q8l-v10.dts	2019-08-03 13:57:27.064767599 +0000
++++ b/arch/arm/dts/rk3288-xt-q8l-v10.dts
 @@ -0,0 +1,732 @@
 +/*
 + * Copyright (c) 2014, 2015 FUKAUMI Naoki <naobsd@gmail.com>
@@ -649,11 +652,11 @@
 + * that only one vop should be enabled to get video console
 + */
 +&vopb {
-+	status = "disabled";
++	status = "okay";
 +};
 +
 +&vopb_mmu {
-+	status = "disabled";
++	status = "okay";
 +};
 +
 +&vopl {
