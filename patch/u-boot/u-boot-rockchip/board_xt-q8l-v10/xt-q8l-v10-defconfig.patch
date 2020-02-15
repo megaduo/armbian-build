@@ -1,6 +1,6 @@
 diff --git a/configs/xt-q8l-v10-rk3288_defconfig b/configs/xt-q8l-v10-rk3288_defconfig
 new file mode 100644
-index 00000000..28bf9e99
+index 00000000..e61e0cb6
 --- /dev/null
 +++ b/configs/xt-q8l-v10-rk3288_defconfig
 @@ -0,0 +1,94 @@
@@ -17,7 +17,6 @@ index 00000000..28bf9e99
 +CONFIG_DEBUG_UART_CLOCK=24000000
 +CONFIG_SMBIOS_PRODUCT_NAME="xt-q8l-v10"
 +CONFIG_DEBUG_UART=y
-+CONFIG_LOCALVERSION="-armbian"
 +# CONFIG_LOCALVERSION_AUTO is not set
 +# CONFIG_ANDROID_BOOT_IMAGE is not set
 +CONFIG_USE_PREBOOT=y
@@ -98,3 +97,4 @@ index 00000000..28bf9e99
 +CONFIG_CMD_DHRYSTONE=y
 +CONFIG_ERRNO_STR=y
 +CONFIG_SMBIOS_MANUFACTURER="Rockchip"
++CONFIG_BOOTDELAY=2
