@@ -1,9 +1,9 @@
 diff --git a/configs/xt-q8l-v10-rk3288_defconfig b/configs/xt-q8l-v10-rk3288_defconfig
 new file mode 100644
-index 00000000..e61e0cb6
+index 00000000..1982fd63
 --- /dev/null
 +++ b/configs/xt-q8l-v10-rk3288_defconfig
-@@ -0,0 +1,94 @@
+@@ -0,0 +1,95 @@
 +CONFIG_ARM=y
 +# CONFIG_SPL_USE_ARCH_MEMCPY is not set
 +# CONFIG_SPL_USE_ARCH_MEMSET is not set
@@ -22,7 +22,7 @@ index 00000000..e61e0cb6
 +CONFIG_USE_PREBOOT=y
 +CONFIG_PREBOOT="usb start"
 +CONFIG_SILENT_CONSOLE=y
-+# CONFIG_PRE_CONSOLE_BUFFER is not set
++CONFIG_MISC_INIT_R=y
 +# CONFIG_DISPLAY_CPUINFO is not set
 +CONFIG_DISPLAY_BOARDINFO_LATE=y
 +# CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
@@ -59,6 +59,8 @@ index 00000000..e61e0cb6
 +CONFIG_DM_KEYBOARD=y
 +CONFIG_LED=y
 +CONFIG_LED_GPIO=y
++CONFIG_MISC=y
++CONFIG_ROCKCHIP_EFUSE=y
 +CONFIG_MMC_DW=y
 +CONFIG_MMC_DW_ROCKCHIP=y
 +CONFIG_DM_ETH=y
@@ -97,4 +99,3 @@ index 00000000..e61e0cb6
 +CONFIG_CMD_DHRYSTONE=y
 +CONFIG_ERRNO_STR=y
 +CONFIG_SMBIOS_MANUFACTURER="Rockchip"
-+CONFIG_BOOTDELAY=2
