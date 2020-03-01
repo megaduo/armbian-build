@@ -1,9 +1,9 @@
 diff --git a/arch/arm/boot/dts/rk3288-xt-q8l-v10.dts b/arch/arm/boot/dts/rk3288-xt-q8l-v10.dts
-new file mode 100644
-index 000000000..da7f70757
+new file mode 100755
+index 000000000..5ee550842
 --- /dev/null
 +++ b/arch/arm/boot/dts/rk3288-xt-q8l-v10.dts
-@@ -0,0 +1,1061 @@
+@@ -0,0 +1,1089 @@
 +/*
 + * Copyright (c) 2014, 2015 FUKAUMI Naoki <naobsd@gmail.com>
 + * 					   2018 Paolo Sabatino <paolo.sabatino@gm**l.com>
@@ -203,8 +203,8 @@ index 000000000..da7f70757
 +	sdio0_pwrseq: sdio0_pwrseq {
 +		compatible = "mmc-pwrseq-simple";
 +		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_enable_h>, <&bt_enable_h>;
-+		reset-gpios = <&gpio4 28 GPIO_ACTIVE_LOW>, <&gpio4 29 GPIO_ACTIVE_LOW>;
++		pinctrl-0 = <&wifi_enable_l>; //, <&bt_enable_l>;
++		reset-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_LOW>; //, <&gpio4 RK_PD5 GPIO_ACTIVE_LOW>;
 +		post-power-on-delay-ms = <100>;
 +	};
 +
@@ -752,22 +752,31 @@ index 000000000..da7f70757
 +	};
 +
 +	sdio0 {
-+		wifi_enable_h: wifienable-h {
-+			rockchip,pins = <4 28 RK_FUNC_GPIO &pcfg_output_high>;
++
++		wifi_enable_l: wifi-enable-l {
++			rockchip,pins = <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_down>;
 +		};
 +
-+		bt_enable_h: bt-enable-h {
-+			rockchip,pins = <4 27 RK_FUNC_GPIO &pcfg_output_high>;
++		/*
++			Original dts says that RK_PD3 is used as bluetooth-enable,
++			but the rk3288 reference document says that RK_PD3 is unconnected.
++			RK_PD5 instead is the reset pin, where high = active.
++			RK_PD2 is device wake pin, RK_PD7 is host device wake pin.
++		*/
++		bt_enable_l: bt-enable-l {
++			rockchip,pins = <4 RK_PD5 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		bt_wake_l: bt-wake-l {
++			rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		bt_host_wake_l: bt-host-wake-l {
++			rockchip,pins = <4 RK_PD7 RK_FUNC_GPIO &pcfg_pull_down>;
 +		};
 +
 +	};
 +
-+
-+	wireless-bluetooth {
-+		uart0_gpios: uart0-gpios {
-+			rockchip,pins = <4 19 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
 +
 +	emmc {
 +
@@ -910,9 +919,28 @@ index 000000000..da7f70757
 +&uart0 {
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&uart0_xfer>, <&uart0_cts>, <&uart0_rts>;
++	uart-has-rtscts;
++
 +	//dmas = <&dmac_peri 1 &dmac_peri 2>;
 +	//dma-names = "tx", "rx";
 +	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm4330-bt";
++		max-speed = <1500000>;
++		current-speed = <1500000>;
++		shutdown-gpios = <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
++		device-wakeup-gpios = <&gpio4 RK_PD2 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio4 RK_PD7 GPIO_ACTIVE_HIGH>;
++		clock-names = "lpo";
++		clocks = <&hym8563>;
++		vddio-supply = <&vcca_18>;
++		vbat-supply = <&vcca_18>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_enable_l>, <&bt_wake_l>, <&bt_host_wake_l>;
++		status = "okay";
++	};
++
 +};
 +
 +&uart1 {
