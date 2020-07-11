@@ -35,7 +35,7 @@ index 00000000..17010305
 +
 +/ {
 +	model = "OrangePi 4";
-+	compatible = "rockchip,rk3399";
++	compatible = "xunlong,orangepi-4", "rockchip,rk3399";
 +
 +	cpuinfo {
 +		compatible = "rockchip,cpuinfo";
@@ -243,11 +243,11 @@ index 00000000..17010305
 +	};
 +
 +	hdmi_sound: hdmi-sound {
-+		status = "disable";
++		status = "okay";
 +		compatible = "simple-audio-card";
 +		simple-audio-card,format = "i2s";
 +		simple-audio-card,mclk-fs = <256>;
-+		simple-audio-card,name = "rockchip,hdmi";
++		simple-audio-card,name = "hdmi-sound";
 +
 +		simple-audio-card,cpu {
 +			sound-dai = <&i2s2>;

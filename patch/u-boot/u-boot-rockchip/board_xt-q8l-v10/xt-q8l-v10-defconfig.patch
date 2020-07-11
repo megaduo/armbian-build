@@ -3,7 +3,11 @@ new file mode 100644
 index 00000000..c19a4a61
 --- /dev/null
 +++ b/configs/xt-q8l-v10-rk3288_defconfig
+<<<<<<< HEAD
 @@ -0,0 +1,97 @@
+=======
+@@ -0,0 +1,98 @@
+>>>>>>> xt-q8l-v10
 +CONFIG_ARM=y
 +# CONFIG_SPL_USE_ARCH_MEMCPY is not set
 +# CONFIG_SPL_USE_ARCH_MEMSET is not set
@@ -100,4 +104,5 @@ index 00000000..c19a4a61
 +CONFIG_CMD_DHRYSTONE=y
 +CONFIG_SHA256=y
 +CONFIG_ERRNO_STR=y
++CONFIG_OF_LIBFDT_OVERLAY=y
 +CONFIG_SMBIOS_MANUFACTURER="Rockchip"
