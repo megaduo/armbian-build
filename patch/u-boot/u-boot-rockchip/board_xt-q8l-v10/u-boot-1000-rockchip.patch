@@ -279,6 +279,7 @@ index 6dbb9bde..3d551431 100644
 +#include <hash.h>
  
  #include <asm/arch-rockchip/misc.h>
+
 diff --git a/drivers/misc/rockchip-efuse.c b/drivers/misc/rockchip-efuse.c
 index 2520c6a3..0e2cab02 100644
 --- a/drivers/misc/rockchip-efuse.c
