@@ -1,17 +1,9 @@
 diff --git a/arch/arm/boot/dts/rk3288-xt-q8l-v10.dts b/arch/arm/boot/dts/rk3288-xt-q8l-v10.dts
-<<<<<<< HEAD
-new file mode 100755
-index 000000000..5ee550842
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-xt-q8l-v10.dts
-@@ -0,0 +1,1089 @@
-=======
 new file mode 100644
 index 000000000..784528f6d
 --- /dev/null
 +++ b/arch/arm/boot/dts/rk3288-xt-q8l-v10.dts
 @@ -0,0 +1,1075 @@
->>>>>>> xt-q8l-v10
 +/*
 + * Copyright (c) 2014, 2015 FUKAUMI Naoki <naobsd@gmail.com>
 + * 					   2018 Paolo Sabatino <paolo.sabatino@gm**l.com>

@@ -279,10 +279,6 @@ index 6dbb9bde..3d551431 100644
 +#include <hash.h>
  
  #include <asm/arch-rockchip/misc.h>
-<<<<<<< HEAD
- 
-=======
-
 diff --git a/drivers/misc/rockchip-efuse.c b/drivers/misc/rockchip-efuse.c
 index 2520c6a3..0e2cab02 100644
 --- a/drivers/misc/rockchip-efuse.c
@@ -295,4 +291,3 @@ index 2520c6a3..0e2cab02 100644
  
  #define RK3399_A_SHIFT          16
  #define RK3399_A_MASK           0x3ff
->>>>>>> xt-q8l-v10
